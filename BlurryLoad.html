@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blurry Load</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            display: block;
+            object-position: center;
+            object-fit: cover;
+        }
+
+        .blur-load{
+            background-size: cover;
+            background-color: center;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;">
+    <h2>Blurry Load</h2>
+    <div class="grid">
+        <!-- Default loading is eager = Loading all at once-->
+        <!-- loading="lazy" >> Will load image when they are in the viewport-->
+        <div class="blur-load" style="background-image: url('./image/img1-small.jpeg')">
+            <img src="./image/img1.jpegx" alt="image 1" loading="lazy">
+        </div>
+        <img src="./image/img2.jpeg" alt="image 2" loading="lazy">
+        <img src="./image/img3.jpeg" alt="image 3" loading="lazy">
+        <img src="./image/img4.jpeg" alt="image 4" loading="lazy">
+        <img src="./image/img5.jpeg" alt="image 5" loading="lazy">
+        <img src="./image/img6.jpeg" alt="image 6" loading="lazy">
+        <img src="./image/img7.jpeg" alt="image 7" loading="lazy">
+        <img src="./image/img8.jpeg" alt="image 8" loading="lazy">
+        <img src="./image/img1.jpeg" alt="image 1" loading="lazy">
+        <img src="./image/img2.jpeg" alt="image 2" loading="lazy">
+        <img src="./image/img3.jpeg" alt="image 3" loading="lazy">
+        <img src="./image/img4.jpeg" alt="image 4" loading="lazy">
+        <img src="./image/img5.jpeg" alt="image 5" loading="lazy">
+        <img src="./image/img6.jpeg" alt="image 6" loading="lazy">
+        <img src="./image/img7.jpeg" alt="image 7" loading="lazy">
+        <img src="./image/img8.jpeg" alt="image 8" loading="lazy">
+    </div>
+</body>
+
+</html>

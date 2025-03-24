@@ -2,54 +2,65 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blurry Load</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blurry Load (No Small Image)</title>
     <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        h2 {
+            padding: 1rem;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
 
-        img {
+        .blur-load img {
             width: 100%;
             aspect-ratio: 1/1;
             display: block;
-            object-position: center;
             object-fit: cover;
+            filter: blur(20px);
+            transform: scale(1.1);
+            transition: filter 0.5s ease, transform 0.5s ease;
         }
 
-        .blur-load{
-            background-size: cover;
-            background-color: center;
+        .blur-load.loaded img {
+            filter: blur(0);
+            transform: scale(1);
         }
     </style>
 </head>
 
-<body style="margin: 0;">
-    <h2>Blurry Load</h2>
+<body>
+    <h2>Blurry Load: Pure CSS + JS Blur Load</h2>
     <div class="grid">
-        <!-- Default loading is eager = Loading all at once-->
-        <!-- loading="lazy" >> Will load image when they are in the viewport-->
-        <div class="blur-load" style="background-image: url('./image/img1-small.jpeg')">
-            <img src="./image/img1.jpegx" alt="image 1" loading="lazy">
-        </div>
-        <img src="./image/img2.jpeg" alt="image 2" loading="lazy">
-        <img src="./image/img3.jpeg" alt="image 3" loading="lazy">
-        <img src="./image/img4.jpeg" alt="image 4" loading="lazy">
-        <img src="./image/img5.jpeg" alt="image 5" loading="lazy">
-        <img src="./image/img6.jpeg" alt="image 6" loading="lazy">
-        <img src="./image/img7.jpeg" alt="image 7" loading="lazy">
-        <img src="./image/img8.jpeg" alt="image 8" loading="lazy">
-        <img src="./image/img1.jpeg" alt="image 1" loading="lazy">
-        <img src="./image/img2.jpeg" alt="image 2" loading="lazy">
-        <img src="./image/img3.jpeg" alt="image 3" loading="lazy">
-        <img src="./image/img4.jpeg" alt="image 4" loading="lazy">
-        <img src="./image/img5.jpeg" alt="image 5" loading="lazy">
-        <img src="./image/img6.jpeg" alt="image 6" loading="lazy">
-        <img src="./image/img7.jpeg" alt="image 7" loading="lazy">
-        <img src="./image/img8.jpeg" alt="image 8" loading="lazy">
+        <div class="blur-load"><img src="./image/img1.jpeg" alt="img1" loading="lazy"></div>
+        <div class="blur-load"><img src="./image/img2.jpeg" alt="img2" loading="lazy"></div>
+        <div class="blur-load"><img src="./image/img3.jpeg" alt="img3" loading="lazy"></div>
+        <div class="blur-load"><img src="./image/img4.jpeg" alt="img4" loading="lazy"></div>
+        <div class="blur-load"><img src="./image/img5.jpeg" alt="img5" loading="lazy"></div>
+        <div class="blur-load"><img src="./image/img6.jpeg" alt="img6" loading="lazy"></div>
+        <div class="blur-load"><img src="./image/img7.jpeg" alt="img7" loading="lazy"></div>
+        <div class="blur-load"><img src="./image/img8.jpeg" alt="img8" loading="lazy"></div>
     </div>
+
+    <script>
+        const blurImages = document.querySelectorAll('.blur-load');
+
+        blurImages.forEach(div => {
+            const img = div.querySelector('img');
+
+            img.addEventListener('load', () => {
+                div.classList.add('loaded');
+            });
+        });
+    </script>
 </body>
 
 </html>
